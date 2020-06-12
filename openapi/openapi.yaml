@@ -1,0 +1,47 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: Delivery Club API
+  contact:
+    name: Darya Goleva
+    email: goleva@rambler.ru
+servers:
+  - url: 'https://example.com/v1.0'
+    description: Live Server
+tags:
+  - name: Client
+    description: |
+      Clients methods
+  - name: Restaurant
+    description: |
+      Restaurants methods
+  - name: Dish
+    description: |
+      Dishes methods
+  - name: Order
+    description: |
+      Orders methods
+security:
+  - SecretApiKey: []
+  - JWT: []
+paths:
+  /clients:
+    $ref: ./paths/clients.yaml
+  /client/{id}:
+    $ref: ./paths/client@{id}.yaml
+  /restaurants:
+    $ref: ./paths/restaurants.yaml
+  /restaurant/{id}:
+    $ref: ./paths/restaurant@{id}.yaml
+  /dish:
+    $ref: ./paths/dish.yaml
+  /dish/{id}:
+    $ref: ./paths/dish@{id}.yaml
+  /restaurant-dishes/{restaurantId}:
+    $ref: ./paths/restaurant-dishes@{restaurantId}.yaml
+  /order:
+    $ref: ./paths/order.yaml
+  /order/{id}:
+    $ref: ./paths/order@{id}.yaml
+  /client-orders/{clientId}:
+    $ref: ./paths/client-orders@{clientId}.yaml

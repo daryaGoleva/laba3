@@ -1,0 +1,59 @@
+get:
+  tags:
+    - Restaurant
+  summary: Get restaurant by ID
+  operationId: GetRestaurant
+  description: |
+    Get restaurant by ID
+  responses:
+    '200':
+      description: Restaurant data has been found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Restaurant.yaml
+    '401':
+      description: Access forbidden
+    '404':
+      description: Not found
+patch:
+  tags:
+    - Restaurant
+  summary: Update restaurant data
+  operationId: PatchRestaurant
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Restaurant.yaml
+  responses:
+    '201':
+      description: Restaurant has been updated
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Restaurant.yaml
+    '401':
+      description: Access forbidden
+    '404':
+      description: Not found
+    '409':
+      description: Restaurant exists and can't be updated
+    '422':
+      description: Invalid data
+delete:
+  tags:
+    - Restaurant
+  summary: Delete Restaurant by ID
+  operationId: DeleteRestaurant
+  description: |
+    Delete restaurant by ID
+  responses:
+    '204':
+      description: Restaurant has been deleted
+    '401':
+      description: Access forbidden
+    '402':
+      description: Can't be deleted
+    '404':
+      description: Not found

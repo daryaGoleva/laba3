@@ -1,0 +1,41 @@
+get:
+  tags:
+    - Restaurant
+  summary: Get restaurants data
+  operationId: GetRestaurants
+  description: |
+    Get restaurants data
+  responses:
+    '200':
+      description: Restaurants data has been found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Restaurant.yaml
+    '401':
+      description: Access forbidden
+post:
+  tags:
+    - Restaurant
+  summary: Create new restaurant
+  operationId: PostRestaurant
+  description: |
+    Create new restaurant
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Restaurant.yaml
+  responses:
+    '200':
+      description: Restaurant has been succesfully created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Restaurant.yaml
+    '401':
+      description: Access forbidden
+    '422':
+      description: Invalid data

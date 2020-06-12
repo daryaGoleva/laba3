@@ -1,0 +1,20 @@
+get:
+  tags:
+    - Order
+  summary: Get all orders by clientId
+  operationId: GetOrdersByClientId
+  description: |
+    Get all orders by clientId
+  responses:
+    '200':
+      description: Orders info has been found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Order.yaml
+    '401':
+      description: Access Forbidden
+    '404':
+      description: Not found

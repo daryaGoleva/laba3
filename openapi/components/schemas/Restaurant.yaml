@@ -1,0 +1,15 @@
+type: object
+required:
+  - name
+properties:
+  id:
+    description: Restaurant identifier
+    readOnly: true
+    type: integer
+  name:
+    description: Restaurant name
+    type: string
+    example: McDonalds
+  description:
+    description: Restaurant description
+    type: string

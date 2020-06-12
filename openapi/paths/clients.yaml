@@ -1,0 +1,41 @@
+get:
+  tags:
+    - Client
+  summary: Get clients data
+  operationId: GetClients
+  description: |
+    Get clients data
+  responses:
+    '200':
+      description: Clients data has been found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Client.yaml
+    '401':
+      description: Access forbidden
+post:
+  tags:
+    - Client
+  summary: Create new client
+  operationId: PostClient
+  description: |
+    Create new client
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Client.yaml
+  responses:
+    '200':
+      description: Client has been succesfully created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Client.yaml
+    '401':
+      description: Access forbidden
+    '422':
+      description: Invalid data

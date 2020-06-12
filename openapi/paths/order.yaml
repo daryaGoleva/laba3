@@ -1,0 +1,23 @@
+post:
+  tags:
+    - Order
+  summary: Create new order
+  operationId: PostOrder
+  description: |
+    Create new order
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Order.yaml
+  responses:
+    '200':
+      description: Order has been succesfully created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Order.yaml
+    '401':
+      description: Access forbidden
+    '422':
+      description: Invalid data

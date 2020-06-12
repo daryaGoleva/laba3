@@ -1,0 +1,20 @@
+get:
+  tags:
+    - Dish
+  summary: Get all dishes by restaurantId
+  operationId: GetDishesByRestaurantId
+  description: |
+    Get all dishes by restaurantId
+  responses:
+    '200':
+      description: Dishes info has been found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Dish.yaml
+    '401':
+      description: Access Forbidden
+    '404':
+      description: Not found

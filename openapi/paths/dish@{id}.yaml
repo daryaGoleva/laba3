@@ -1,0 +1,59 @@
+get:
+  tags:
+    - Dish
+  summary: Get dish by ID
+  operationId: GetDish
+  description: |
+    Get dish by ID
+  responses:
+    '200':
+      description: Dish data has been found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Dish.yaml
+    '401':
+      description: Access forbidden
+    '404':
+      description: Not found
+patch:
+  tags:
+    - Dish
+  summary: Update dish data
+  operationId: PatchDish
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Dish.yaml
+  responses:
+    '201':
+      description: Dish has been updated
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Dish.yaml
+    '401':
+      description: Access forbidden
+    '404':
+      description: Not found
+    '409':
+      description: Dish exists and can't be updated
+    '422':
+      description: Invalid data
+delete:
+  tags:
+    - Dish
+  summary: Delete Dish by ID
+  operationId: DeleteDish
+  description: |
+    Delete dish by ID
+  responses:
+    '204':
+      description: Dish has been deleted
+    '401':
+      description: Access forbidden
+    '402':
+      description: Can't be deleted
+    '404':
+      description: Not found

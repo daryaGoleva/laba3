@@ -1,0 +1,59 @@
+get:
+  tags:
+    - Order
+  summary: Get order by ID
+  operationId: GetOrder
+  description: |
+    Get order by ID
+  responses:
+    '200':
+      description: Order data has been found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Order.yaml
+    '401':
+      description: Access forbidden
+    '404':
+      description: Not found
+patch:
+  tags:
+    - Order
+  summary: Update order data
+  operationId: PatchOrder
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Order.yaml
+  responses:
+    '201':
+      description: Order has been updated
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Order.yaml
+    '401':
+      description: Access forbidden
+    '404':
+      description: Not found
+    '409':
+      description: Order exists and can't be updated
+    '422':
+      description: Invalid data
+delete:
+  tags:
+    - Order
+  summary: Delete Order by ID
+  operationId: DeleteOrder
+  description: |
+    Delete order by ID
+  responses:
+    '204':
+      description: Order has been deleted
+    '401':
+      description: Access forbidden
+    '402':
+      description: Can't be deleted
+    '404':
+      description: Not found

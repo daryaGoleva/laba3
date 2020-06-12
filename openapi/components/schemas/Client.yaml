@@ -1,0 +1,21 @@
+type: object
+required:
+  - name
+  - phone
+properties:
+  id:
+    description: Client identifier
+    readOnly: true
+    type: integer
+  name:
+    description: Client name
+    type: string
+    maxLength: 255
+    example: Goleva
+  address:
+    description: Client address
+    type: string
+  phone:
+    description: The phone value
+    type: string
+    example: +7978123456

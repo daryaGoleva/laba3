@@ -1,0 +1,16 @@
+type: object
+properties:
+  id:
+    description: Order identifier
+    readOnly: true
+    type: integer
+  dishes:
+    description: Dishes list
+    type: array
+    items:
+      allOf:
+        - $ref: ./Dish.yaml
+  client:
+    description: Client who ordered
+    allOf:
+      - $ref: ./Client.yaml

@@ -1,0 +1,23 @@
+type: object
+required:
+  - name
+  - price
+properties:
+  id:
+    description: Dish identifier
+    readOnly: true
+    type: integer
+  name:
+    description: Dish name
+    type: string
+    example: French Potato
+  description:
+    description: Dish description
+    type: string
+  price:
+    description: Dish price
+    type: number
+  restaurant:
+    description: Place which cooks this dish
+    allOf:
+      - $ref: ./Restaurant.yaml

@@ -1,0 +1,522 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: Delivery Club API
+  contact:
+    name: Darya Goleva
+    email: goleva@rambler.ru
+servers:
+  - url: 'https://example.com/v1.0'
+    description: Live Server
+tags:
+  - name: Client
+    description: |
+      Clients methods
+  - name: Restaurant
+    description: |
+      Restaurants methods
+  - name: Dish
+    description: |
+      Dishes methods
+  - name: Order
+    description: |
+      Orders methods
+security:
+  - SecretApiKey: []
+  - JWT: []
+paths:
+  /clients:
+    get:
+      tags:
+        - Client
+      summary: Get clients data
+      operationId: GetClients
+      description: |
+        Get clients data
+      responses:
+        '200':
+          description: Clients data has been found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Client'
+        '401':
+          description: Access forbidden
+    post:
+      tags:
+        - Client
+      summary: Create new client
+      operationId: PostClient
+      description: |
+        Create new client
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Client'
+      responses:
+        '200':
+          description: Client has been succesfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+        '401':
+          description: Access forbidden
+        '422':
+          description: Invalid data
+  '/client/{id}':
+    get:
+      tags:
+        - Client
+      summary: Get client by ID
+      operationId: GetClient
+      description: |
+        Get client by ID
+      responses:
+        '200':
+          description: Client data has been found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+        '401':
+          description: Access forbidden
+        '404':
+          description: Not found
+    patch:
+      tags:
+        - Client
+      summary: Update client data
+      operationId: PatchClient
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Client'
+      responses:
+        '201':
+          description: Client has been updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+        '401':
+          description: Access forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Client exists and can't be updated
+        '422':
+          description: Invalid data
+    delete:
+      tags:
+        - Client
+      summary: Delete client by ID
+      operationId: DeleteClient
+      description: |
+        Delete client by ID
+      responses:
+        '204':
+          description: Client has been deleted
+        '401':
+          description: Access forbidden
+        '402':
+          description: Can't be deleted
+        '404':
+          description: Not found
+  /restaurants:
+    get:
+      tags:
+        - Restaurant
+      summary: Get restaurants data
+      operationId: GetRestaurants
+      description: |
+        Get restaurants data
+      responses:
+        '200':
+          description: Restaurants data has been found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Restaurant'
+        '401':
+          description: Access forbidden
+    post:
+      tags:
+        - Restaurant
+      summary: Create new restaurant
+      operationId: PostRestaurant
+      description: |
+        Create new restaurant
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Restaurant'
+      responses:
+        '200':
+          description: Restaurant has been succesfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Restaurant'
+        '401':
+          description: Access forbidden
+        '422':
+          description: Invalid data
+  '/restaurant/{id}':
+    get:
+      tags:
+        - Restaurant
+      summary: Get restaurant by ID
+      operationId: GetRestaurant
+      description: |
+        Get restaurant by ID
+      responses:
+        '200':
+          description: Restaurant data has been found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Restaurant'
+        '401':
+          description: Access forbidden
+        '404':
+          description: Not found
+    patch:
+      tags:
+        - Restaurant
+      summary: Update restaurant data
+      operationId: PatchRestaurant
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Restaurant'
+      responses:
+        '201':
+          description: Restaurant has been updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Restaurant'
+        '401':
+          description: Access forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Restaurant exists and can't be updated
+        '422':
+          description: Invalid data
+    delete:
+      tags:
+        - Restaurant
+      summary: Delete Restaurant by ID
+      operationId: DeleteRestaurant
+      description: |
+        Delete restaurant by ID
+      responses:
+        '204':
+          description: Restaurant has been deleted
+        '401':
+          description: Access forbidden
+        '402':
+          description: Can't be deleted
+        '404':
+          description: Not found
+  /dish:
+    post:
+      tags:
+        - Dish
+      summary: Create new dish
+      operationId: PostDish
+      description: |
+        Create new dish
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dish'
+      responses:
+        '200':
+          description: Dish has been succesfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dish'
+        '401':
+          description: Access forbidden
+        '422':
+          description: Invalid data
+  '/dish/{id}':
+    get:
+      tags:
+        - Dish
+      summary: Get dish by ID
+      operationId: GetDish
+      description: |
+        Get dish by ID
+      responses:
+        '200':
+          description: Dish data has been found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dish'
+        '401':
+          description: Access forbidden
+        '404':
+          description: Not found
+    patch:
+      tags:
+        - Dish
+      summary: Update dish data
+      operationId: PatchDish
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dish'
+      responses:
+        '201':
+          description: Dish has been updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dish'
+        '401':
+          description: Access forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Dish exists and can't be updated
+        '422':
+          description: Invalid data
+    delete:
+      tags:
+        - Dish
+      summary: Delete Dish by ID
+      operationId: DeleteDish
+      description: |
+        Delete dish by ID
+      responses:
+        '204':
+          description: Dish has been deleted
+        '401':
+          description: Access forbidden
+        '402':
+          description: Can't be deleted
+        '404':
+          description: Not found
+  '/restaurant-dishes/{restaurantId}':
+    get:
+      tags:
+        - Dish
+      summary: Get all dishes by restaurantId
+      operationId: GetDishesByRestaurantId
+      description: |
+        Get all dishes by restaurantId
+      responses:
+        '200':
+          description: Dishes info has been found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Dish'
+        '401':
+          description: Access Forbidden
+        '404':
+          description: Not found
+  /order:
+    post:
+      tags:
+        - Order
+      summary: Create new order
+      operationId: PostOrder
+      description: |
+        Create new order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '200':
+          description: Order has been succesfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '401':
+          description: Access forbidden
+        '422':
+          description: Invalid data
+  '/order/{id}':
+    get:
+      tags:
+        - Order
+      summary: Get order by ID
+      operationId: GetOrder
+      description: |
+        Get order by ID
+      responses:
+        '200':
+          description: Order data has been found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '401':
+          description: Access forbidden
+        '404':
+          description: Not found
+    patch:
+      tags:
+        - Order
+      summary: Update order data
+      operationId: PatchOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '201':
+          description: Order has been updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '401':
+          description: Access forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Order exists and can't be updated
+        '422':
+          description: Invalid data
+    delete:
+      tags:
+        - Order
+      summary: Delete Order by ID
+      operationId: DeleteOrder
+      description: |
+        Delete order by ID
+      responses:
+        '204':
+          description: Order has been deleted
+        '401':
+          description: Access forbidden
+        '402':
+          description: Can't be deleted
+        '404':
+          description: Not found
+  '/client-orders/{clientId}':
+    get:
+      tags:
+        - Order
+      summary: Get all orders by clientId
+      operationId: GetOrdersByClientId
+      description: |
+        Get all orders by clientId
+      responses:
+        '200':
+          description: Orders info has been found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+        '401':
+          description: Access Forbidden
+        '404':
+          description: Not found
+components:
+  schemas:
+    Client:
+      type: object
+      required:
+        - name
+        - phone
+      properties:
+        id:
+          description: Client identifier
+          readOnly: true
+          type: integer
+        name:
+          description: Client name
+          type: string
+          maxLength: 255
+          example: Goleva
+        address:
+          description: Client address
+          type: string
+        phone:
+          description: The phone value
+          type: string
+          example: 7978123456
+    Restaurant:
+      type: object
+      required:
+        - name
+      properties:
+        id:
+          description: Restaurant identifier
+          readOnly: true
+          type: integer
+        name:
+          description: Restaurant name
+          type: string
+          example: McDonalds
+        description:
+          description: Restaurant description
+          type: string
+    Dish:
+      type: object
+      required:
+        - name
+        - price
+      properties:
+        id:
+          description: Dish identifier
+          readOnly: true
+          type: integer
+        name:
+          description: Dish name
+          type: string
+          example: French Potato
+        description:
+          description: Dish description
+          type: string
+        price:
+          description: Dish price
+          type: number
+        restaurant:
+          description: Place which cooks this dish
+          allOf:
+            - $ref: '#/components/schemas/Restaurant'
+    Order:
+      type: object
+      properties:
+        id:
+          description: Order identifier
+          readOnly: true
+          type: integer
+        dishes:
+          description: Dishes list
+          type: array
+          items:
+            allOf:
+              - $ref: '#/components/schemas/Dish'
+        client:
+          description: Client who ordered
+          allOf:
+            - $ref: '#/components/schemas/Client'

@@ -1,0 +1,23 @@
+post:
+  tags:
+    - Dish
+  summary: Create new dish
+  operationId: PostDish
+  description: |
+    Create new dish
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Dish.yaml
+  responses:
+    '200':
+      description: Dish has been succesfully created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Dish.yaml
+    '401':
+      description: Access forbidden
+    '422':
+      description: Invalid data
